@@ -37,4 +37,10 @@ public class UserServiceImp implements UserService {
 		userDao.putUser(user);
 	}
 
+	@Override
+	public void initDB() {
+		// TODO Auto-generated method stub
+		userDao.initDB();
+	}
+
 }
