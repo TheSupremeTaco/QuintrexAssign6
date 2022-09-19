@@ -20,7 +20,7 @@ public class UserDaoImp implements UserDao{
 		@Override
 		public List<User> getUsers() {
 			// TODO Auto-generated method stub
-			String sql = "SELECT * FROM users";
+			String sql = "SELECT * FROM user";
 			List<User> query = jdbcTemplate.query(sql, new BeanPropertyRowMapper<User>(User.class));
 			System.out.print(query);
 			return query;
@@ -33,7 +33,7 @@ public class UserDaoImp implements UserDao{
 			newUser.setUserName(newUser.getUserName());
 			newUser.setPassWord(newUser.getPassWord());
 			newUser.setUserId(newUser.getUserId());
-			String sql = "INSERT INTO user(userName,passWord,userId) VALUES ("
+			String sql = "INSERT INTO user(userId,userName,passWord) VALUES ("
 					+ "\"" + newUser.getUserId() + "\","
 					+ "\"" + newUser.getPassWord()	+ "\","
 					+ "\"" + newUser.getUserName() + "\");";
@@ -44,7 +44,7 @@ public class UserDaoImp implements UserDao{
 		@Override
 		public void deleteUser(String userName, int userId) {
 			// TODO Auto-generated method stub
-			String sql = "DELETE FROM users WHERE userId="+userId+"AND userName =\""
+			String sql = "DELETE FROM user WHERE userId="+userId+"AND userName =\""
 					+ userName + "\");";
 			jdbcTemplate.update(sql);
 		}
@@ -52,7 +52,7 @@ public class UserDaoImp implements UserDao{
 		@Override
 		public void putUser(User user) {
 			// TODO Auto-generated method stub
-			String sql = "UPDATE users SET userName = \"" + user.getUserName() + "\" WHERE userId = \""
+			String sql = "UPDATE user SET userName = \"" + user.getUserName() + "\" WHERE userId = \""
 					+ user.getUserId() + ";";
 			jdbcTemplate.update(sql);
 		}
